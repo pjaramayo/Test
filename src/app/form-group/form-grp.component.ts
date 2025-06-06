@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-grp',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './form-grp.component.html',
   styleUrl: './form-grp.component.css',
 })
@@ -12,6 +12,7 @@ export class FormGrpComponent {
   formGr = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
+
     address: new FormGroup({
       street: new FormControl(''),
       city: new FormControl(''),
@@ -23,5 +24,12 @@ export class FormGrpComponent {
     // TODO: Use EventEmitter with form value
     console.warn(this.formGr.value);
   }
-
+  updateProfile() {
+    this.formGr.patchValue({
+      firstName: 'Nancy',
+      address: {
+        street: '123 Drew Street',
+      },
+    });
+  }
 }

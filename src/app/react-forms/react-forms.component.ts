@@ -9,7 +9,7 @@ import {FormControl,ReactiveFormsModule } from '@angular/forms';
 export class ReactFormsComponent {
   name = new FormControl('');
 
-  updateName(){
+  updateName  (){
     this.name.setValue("nancy");
   }
 }

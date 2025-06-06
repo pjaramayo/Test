@@ -1,0 +1,40 @@
+<form class="form-group col-sm-4" [formGroup]="profileForm" (ngSubmit)="enviarFormulario()">
+
+  <label class="col-form-label" for="first-name">First Name: </label>
+  <input class="form-control" id="first-name" type="text" formControlName="firstName">
+
+  <label class="col-form-label" for="last-name">Last Name: </label>
+  <input class="form-control" id="last-name" type="text" formControlName="lastName">
+
+  <div formGroupName="address">
+
+    <h2>Address</h2>
+    <label class="col-form-label" for="street">Street: </label>
+    <input class="form-control" id="street" type="text" formControlName="street" />
+
+    <label class="col-form-label" for="city">City: </label>
+    <input class="form-control" id="city" type="text" formControlName="city" />
+
+    <label class="col-form-label" for="state">State: </label>
+    <input class="form-control" id="state" type="text" formControlName="state" />
+
+    <label class="col-form-label" for="zip">Zip Code: </label>
+    <input class="form-control" id="zip" type="text" formControlName="zip" />
+
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+
+    <div formArrayName="aliases">
+      <h2>Aliases</h2>
+      <button type="button" (click)="addAlias()">+ Add another alias</button>
+      @for (alias of aliases.controls; track $index; let i = $index) {
+      <div>
+        <!-- The repeated alias template -->
+        <label for="alias-{{ i }}">Alias:</label>
+        <input id="alias-{{ i }}" type="text" [formControlName]="i" />
+      </div>
+      }
+    </div>
+
+  </div>
