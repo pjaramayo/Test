@@ -1,6 +1,7 @@
 # ¿Que es FormGroup?.
-  1. Define un grupo de elementos de entradas fijo estático que se usa para manejar un grupo de controles de formulario como una sola unidad.
-  2. Se puede anidar un grupo de formularios.
+  1. Es una encapsulacíon y gestión de una colección de "FormControls" u otros FormGroups anidados/FormArrays. Es la representación del grupo en tu modelo.
+  2. Es un objeto de datos estructurados en tu modelo de datos que representa la coleción de elementos de entrada de un formulario.
+  3. Se puede anidar un grupo de formularios.
 
 # ¿Que actualiza desde la parte del modelo de datos?.
   1. Actualiza solo la parte de interes de todo el formulario.

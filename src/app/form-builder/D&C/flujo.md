@@ -3,10 +3,11 @@ graph TD
     A[Angular Forms] --> B[ReactiveFormsModule];
 
     subgraph MODELO Lógica y Estructura de Datos 
-        B --> C[FormControl];
-        B --> D[FormGroup];
-        B --> E[FormBuilder];
-        B --> F[FormArray];
+      
+        B --> C[FormGroup];
+        B --> D[FormControl];
+        B --> E[FormArray];
+    
     end
     %% Asegúrate de que aquí HAYA UN SALTO DE LÍNEA ANTES de la siguiente instrucción.
 
@@ -18,9 +19,13 @@ graph TD
 
     %% Conexiones que fuerzan la jerarquía visual
   
-  G --> C;
+  G --> F;
   H --> D
-
+  
+  I[AbstractControl] --> C[FormGroup]
+  I[AbstractControl] --> D[FormControl]
+  I[AbstractControl] --> E[FormControl]
+   
 
     %% Estilos para diferenciar y destacar
     style A fill:#5f3dc4,stroke:#f1f3f5,stroke-width:2px;
