@@ -10,5 +10,5 @@
 
   # ¿Qué son las directivas [formGroup] y [formControl]?
   1. La directiva [formGroup] que vincula un contenedor a un FormGroup anidado.
-   La directiva [formControl] que vincula un elemento de entrada (<input>, <select>, <textarea>) a una instancia de FormControl dentro de un FormGroup.
-
+   
+  2. La directiva [formControl] que vincula un elemento de entrada (input, select, textarea) a una instancia de FormControl dentro de un FormGroup.

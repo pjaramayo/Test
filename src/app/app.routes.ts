@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { ReactFormsComponent } from './form-control/react-forms.component';
 import { FormGrpComponent } from './form-group/form-grp.component';
