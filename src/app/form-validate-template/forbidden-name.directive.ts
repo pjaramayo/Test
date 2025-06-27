@@ -17,16 +17,14 @@ export class ForbiddenValidatorDirective implements Validator {
       return null;
     }
     const forbiddenRegex = new RegExp(this.forbiddenName, 'i');
-    console.log('Esto es:'+ forbiddenRegex);
     return forbiddenNameValidator(forbiddenRegex)(control);
   }
 }
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
-  console.log('iii',nameRe)
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = nameRe.test(control.value);
-    console.log(forbidden)
+    console.log('Bool ->'+forbidden)
     return forbidden ? { forbiddenName: { value: control.value } } : null;
   };
 }

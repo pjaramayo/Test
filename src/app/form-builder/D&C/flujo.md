@@ -30,10 +30,10 @@ graph TD
     %% Estilos para diferenciar y destacar
     style A fill:#5f3dc4,stroke:#f1f3f5,stroke-width:2px;
     style B fill:#00b4d8,stroke:#0096c7,stroke-width:2px;
-    style C fill:#dee2e6,stroke:#adb5bd,stroke-width:2px;
-    style D fill:#dee2e6,stroke:#adb5bd,stroke-width:2px;
-    style E fill:#dee2e6,stroke:#adb5bd,stroke-width:2px;
-    style F fill:#dee2e6,stroke:#adb5bd,stroke-width:2px;
+    style C fill:1f271b,stroke:#adb5bd,stroke-width:2px;
+    style D fill:1f271b,stroke:#adb5bd,stroke-width:2px;
+    style E fill:1f271b,stroke:#adb5bd,stroke-width:2px;
+    style F fill:1f271b,stroke:#adb5bd,stroke-width:2px;
 
     style G fill:#f59f00,stroke:#e08e00,stroke-width:2px;
     style H fill:#f59f00,stroke:#e08e00,stroke-width:2px;

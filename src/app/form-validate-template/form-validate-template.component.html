@@ -9,22 +9,22 @@
     minlength="4"
     appForbiddenName="Ramón"
     [(ngModel)]="actor.name"
-    #name="ngModel"
+    #ame="ngModel"
   />
 
-  @if (name.invalid && (name.dirty || name.touched)) {
+  @if (ame.invalid && (ame.dirty || ame.touched)) {
     <div class="alert">
-      @if (name.hasError('required')) {
+      @if (ame.hasError('required')) {
         <div>
           Campo name requerido.
         </div>
       }
-      @if (name.hasError('minlength')) {
+      @if (ame.hasError('minlength')) {
         <div>
-          Name must be at least 4 characters long.
+          Name necesita ser mas de 4 caracteres.
         </div>
       }
-      @if (name.hasError('forbiddenName')) {
+      @if (ame.hasError('forbiddenName')) {
         <div>
           'No puedes ingresar Ramón.'
         </div>
