@@ -3,9 +3,9 @@ graph TD
 
 A[NG_VALIDATORS<br/>Token de identificacion] --> B[Validator<br>Clase];
 A --> C[ValidatorFn<br/>Funcion Pura];
-A --> D[ValidationErrors Objeto Javascript o Null];
+A --> D[ValidationErrors Objeto Javascript o Null ];
 
-B[•Validator;<br>Clase] --> E[•validate, <br/> •AbstarcControl <br/> •ValidatorErrors, <br/> •null];
+B[•Validator;<br>Clase] --> E[•validate, <br/> •AbstarcControl <br/> •ValidatorErrors, <br/> •null <br/> •return -> 'custom': true;];
 
 C[ValidatorFn<br/>Funcion Pura] --> F[•AbstarcControl <br/> •ValidatorErrors, <br/> •null];
 

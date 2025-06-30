@@ -1,12 +1,13 @@
 ## 1. ¿Qué es el NG_VALIDATORS?
- * Es un **TOKEN** (una identificación).
+ * Es un **token de inyección de dependencias de Angular** (🆔 una identificación).
 
-## 2. ¿Cuál es la función del TOKEN?
- * **Proveer una identificación** a Angular para que sepa que se va a *injectar* **Validator, ValidatorFn, ValidatorErrors** a los elementos de entrada (input) de la vista.
+## 2.¿Cuál es la función del TOKEN?
+  * **Proveer una identificación** a Angular para que sepa que se va a *injectar* validadores como:
+   **Validator, ValidatorFn, ValidatorErrors** a los elementos de entrada (input) de la vista.
      
 ## 3. ¿Qué es el Validator?
- * Es una **interface** que se implementa en una clase para crear una **directiva de validador** con un -> error personalizado.
-  ***export class ForbiddenValidatorDirective implements Validator {...}***
+ * Es una **interface** que se implementa en una ***clase*** para crear una **directiva de validador** con un -> error personalizado.
+  ***export class ForbiddenValidatorDirectiv.e implements Validator {...}***
 
 ## 4. ¿Para que se implementa en la clase un Validator?
  * Para un control o inspección personalizado a un elemento de entrada (input) del frm por medio de un Método "validate".

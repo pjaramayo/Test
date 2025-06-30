@@ -1,34 +1,122 @@
 <form>
   <label class="col-form-label" for="name">Name: </label>
-  <input
-    type="text"
-    id="name"
-    name="name"
-    class="form-control"
-    required
-    minlength="4"
-    appForbiddenName="Ramón"
-    [(ngModel)]="actor.name"
-    #ame="ngModel"
-  />
+  <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="Ramón"
+    [(ngModel)]="actor.name" #ame="ngModel" />
 
   @if (ame.invalid && (ame.dirty || ame.touched)) {
-    <div class="alert">
-      @if (ame.hasError('required')) {
-        <div>
-          Campo name requerido.
-        </div>
-      }
-      @if (ame.hasError('minlength')) {
-        <div>
-          Name necesita ser mas de 4 caracteres.
-        </div>
-      }
-      @if (ame.hasError('forbiddenName')) {
-        <div>
-          'No puedes ingresar Ramón.'
-        </div>
-      }
+  <div class="alert">
+    @if (ame.hasError('required')) {
+    <div>
+      Campo name requerido.
     </div>
+    }
+    @if (ame.hasError('minlength')) {
+    <div>
+      Name necesita ser mas de 4 caracteres.
+    </div>
+    }
+    @if (ame.hasError('forbiddenName')) {
+    <div>
+      No se acepta a {{ame.value}}
+
+    </div>
+    }
+  </div>
   }
 </form>
+
+
+<div class="container">
+  <h1>Conceptos Fundamentales de Validación en Angular</h1>
+
+
+
+  <h2>1. ¿Qué es <code>NG_VALIDATORS</code>?</h2>
+  <p>Es un <strong>token de inyección de dependencias de Angular</strong> (🆔 una identificación). Angular lo utiliza
+    para agrupar y reconocer proveedores de validadores personalizados en sus formularios.</p>
+
+
+
+  <h2>2. ¿Cuál es la función del TOKEN <code>NG_VALIDATORS</code>?</h2>
+  <p>La función principal de este token es <strong>proveer una identificación a Angular</strong> para que sepa que se
+    van a inyectar validadores como:</p>
+  <ul>
+    <li><code>Validator</code></li>
+    <li><code>ValidatorFn</code></li>
+    <li><code>ValidatorErrors</code></li>
+  </ul>
+  <p>Estos validadores se aplican a los <b>elementos de entrada (input)</b> de la vista, permitiendo que los formularios
+    de Angular realicen validaciones complejas y personalizadas.</p>
+
+
+
+  <h2>3. ¿Qué es <code>Validator</code>?</h2>
+  <p><code>Validator</code> es una <strong>interfaz</strong> que se implementa en una <b>clase</b> para crear una
+    <strong>directiva de validador</strong> con un error personalizado. Esto es útil cuando necesitas una lógica de
+    validación más compleja o reutilizable a través de una directiva.
+  </p>
+  <p><strong>Ejemplo de implementación:</strong></p>
+  <pre><code>export class ForbiddenValidatorDirective implements Validator &lbrace;
+  validate(control: AbstractControl): &lbrace; [key: string]: any &rbrace; | null &lbrace;
+    // Lógica de validación
+    return &lbrace;'forbiddenName': true&rbrace;; // Retorna un error si es inválido
+  &rbrace;
+&rbrace;</code></pre>
+
+
+
+  <h2>4. ¿Para qué se implementa <code>Validator</code> en una clase?</h2>
+  <p>Se implementa para realizar un <strong>control o inspección personalizado</strong> a un elemento de entrada (input)
+    del formulario (<code>frm</code>) por medio de su método <code>validate</code>.</p>
+  <p>El método <code>validate</code> recibe un <code>AbstractControl</code> (que representa el elemento de entrada del
+    formulario) y debe devolver:</p>
+  <ul>
+    <li>Un objeto de tipo <code>ValidatorErrors</code> (por ejemplo, <code>&lbrace;'customError': true&rbrace;</code>)
+      si el valor es <strong>inválido</strong>.</li>
+    <li><code>null</code> si el valor es <strong>válido</strong>.</li>
+  </ul>
+  <p><strong>Sintaxis del método <code>validate</code>:</strong></p>
+  <pre><code>validate(control: AbstractControl): ValidatorErrors | null &lbrace;
+  // ... lógica de validación ...
+  return &lbrace;'custom': true&rbrace;; // Ejemplo: 'custom' es la clave del error
+&rbrace;</code></pre>
+  <p>Donde:</p>
+  <ul>
+    <li><code>AbstractControl</code>: Es el elemento de entrada (input) del formulario.</li>
+    <li><code>ValidatorErrors</code>: Significa que el valor es **inválido**.</li>
+    <li><code>null</code>: Significa que el valor es **válido**.</li>
+  </ul>
+
+
+
+  <h2>5. ¿Qué es <code>ValidatorFn</code>?</h2>
+  <p><code>ValidatorFn</code> es una <strong>interfaz</strong> que se aplica a una <strong>función validadora</strong>.
+    Permite crear una función de validación para un elemento de entrada (input) <strong>sin necesidad de crear una clase
+      o directiva</strong>. Es ideal para validaciones más sencillas y directas.</p>
+
+
+
+  <h2>6. ¿Para qué se implementa un <code>ValidatorFn</code>?</h2>
+  <p>Se implementa para que la función validadora <strong>reciba un elemento de entrada (<code>control</code>)</strong>
+    y devuelva un diagnóstico. Al igual que con <code>Validator</code>, la función debe retornar:</p>
+  <ul>
+    <li>Un objeto de tipo <code>ValidatorErrors</code> si el valor es <strong>inválido</strong>.</li>
+    <li><code>null</code> si el valor es <strong>válido</strong>.</li>
+  </ul>
+  <p><strong>Sintaxis de una <code>ValidatorFn</code>:</strong></p>
+  <pre><code>function forbiddenNameValidator(nameRe: RegExp): ValidatorFn &lbrace;
+  return (control: AbstractControl): ValidatorErrors | null => &lbrace;
+    const forbidden = nameRe.test(control.value);
+    return forbidden ? &lbrace;'forbiddenName': &lbrace;value: control.value&rbrace;&rbrace; : null;
+  &rbrace;;
+&rbrace;</code></pre>
+  <p>Donde:</p>
+  <ul>
+    <li><code>AbstractControl</code>: Es el elemento de entrada (input) del formulario.</li>
+    <li><code>ValidatorErrors</code>: Significa que el valor es **inválido**.</li>
+    <li><code>null</code>: Significa que el valor es **válido**.</li>
+  </ul>
+  <p>La función retornará <code>true</code> o <code>false</code> (o un objeto de error/<code>null</code>) por medio de
+    una prueba (<code>test</code>) que compara el <code>control</code> (input - <code>AbstractControl</code>) contra un
+    valor o patrón definido por parámetro.</p>
+</div>

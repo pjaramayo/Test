@@ -12,7 +12,7 @@ export class ForbiddenValidatorDirective implements Validator {
   @Input('appForbiddenName') forbiddenName: string = '';
   //appForbiddenName es un alias que enlaza con el alias del html.
   //forbiddenName es una propiedad para trabajar en este fichero.ts, esta contiene Ramón.
-  validate(control: AbstractControl): ValidationErrors | null { //Aqui se cheque que el input tenga un valor.
+  validate(control: AbstractControl): ValidationErrors | null { //Aqui se chequea que el input tenga un valor.
     if (!this.forbiddenName) {
       return null;
     }
@@ -25,6 +25,7 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = nameRe.test(control.value);
     console.log('Bool ->'+forbidden)
+    console.log('control value '+control.value)
     return forbidden ? { forbiddenName: { value: control.value } } : null;
   };
 }
