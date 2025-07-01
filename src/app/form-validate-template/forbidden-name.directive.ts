@@ -24,8 +24,7 @@ export class ForbiddenValidatorDirective implements Validator {
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = nameRe.test(control.value);
-    console.log('Bool ->'+forbidden)
-    console.log('control value '+control.value)
-    return forbidden ? { forbiddenName: { value: control.value } } : null;
+    console.log('es:'+forbidden)
+    return forbidden ? {forbiddenName: {value:control.value}} : null;
   };
 }
