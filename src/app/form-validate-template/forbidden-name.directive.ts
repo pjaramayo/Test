@@ -9,13 +9,15 @@ import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, ValidationError
 })
 
 export class ForbiddenValidatorDirective implements Validator {
-  @Input('appForbiddenName') forbiddenName: string = '';
+  @Input('appForbiddenName') forbiddenName: string = '';//Recibe el valor.
+  //appForbiddenName es un Alias.
   //appForbiddenName es un alias que enlaza con el alias del html.
   //forbiddenName es una propiedad para trabajar en este fichero.ts, esta contiene Ramón.
   validate(control: AbstractControl): ValidationErrors | null { //Aqui se chequea que el input tenga un valor.
     if (!this.forbiddenName) {
       return null;
     }
+    // console.log('Aq'+control.value)
     const forbiddenRegex = new RegExp(this.forbiddenName, 'i');
     return forbiddenNameValidator(forbiddenRegex)(control);
   }

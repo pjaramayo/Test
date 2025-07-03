@@ -1,9 +1,11 @@
 <form>
   <label class="col-form-label" for="name">Name: </label>
-  <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="Ramón"
-    [(ngModel)]="actor.name" #ame="ngModel" />
+  <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="Ramon"
+    [(ngModel)]="actor.name" #ame="ngModel"/>
+
 
   @if (ame.invalid && (ame.dirty || ame.touched)) {
+     touched {{ame.touched}}
   <div class="alert">
     @if (ame.hasError('required')) {
     <div>
