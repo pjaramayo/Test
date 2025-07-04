@@ -1,0 +1,26 @@
+<form [formGroup]="actorForm" (ngSubmit)="onSubmit()">
+
+  <label class="col-form-label" for="name">Name: </label>
+  <input type="text" id="name" class="form-control" formControlName="name" />
+
+  @if (nameControl.invalid && (nameControl.dirty || nameControl.touched)) {
+  <div class="alert">
+    @if (nameControl.hasError('required')) {
+    <div>
+      Campo name requerido.
+    </div>
+    }
+    @if (nameControl.hasError('minlength')) {
+    <div>
+      Name necesita ser más de 4 caracteres.
+    </div>
+    }
+    @if (nameControl.hasError('forbiddenName')) {
+    <div>
+      No se acepta a {{ nameControl.value }} </div>
+    }
+  </div>
+  }
+
+  <button type="submit" [disabled]="actorForm.invalid">Enviar Formulario</button>
+</form>

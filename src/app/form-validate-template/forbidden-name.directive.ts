@@ -1,19 +1,30 @@
 import { Directive, Input } from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, ValidationErrors } from '@angular/forms';
-
+import {
+  AbstractControl,
+  NG_VALIDATORS,
+  Validator,
+  ValidatorFn,
+  ValidationErrors,
+} from '@angular/forms';
 
 @Directive({
-  selector: '[appForbiddenName]',//<input type="text" appForbiddenName="Ramón" /> El selector en @directive es un atributo(clave Valor)
+  selector: '[appForbiddenName]', //<input type="text" appForbiddenName="Ramón" /> El selector en @directive es un atributo(clave Valor)
   standalone: true, // ¡ESTO ES CRUCIAL PARA UN COMPONENTE STANDALONE!
-  providers: [{ provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true }]
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: ForbiddenValidatorDirective,
+      multi: true,
+    },
+  ],
 })
-
 export class ForbiddenValidatorDirective implements Validator {
-  @Input('appForbiddenName') forbiddenName: string = '';//Recibe el valor.
+  @Input('appForbiddenName') forbiddenName: string = ''; //Recibe el valor.
   //appForbiddenName es un Alias.
   //appForbiddenName es un alias que enlaza con el alias del html.
   //forbiddenName es una propiedad para trabajar en este fichero.ts, esta contiene Ramón.
-  validate(control: AbstractControl): ValidationErrors | null { //Aqui se chequea que el input tenga un valor.
+  validate(control: AbstractControl): ValidationErrors | null {
+    //Aqui se chequea que el input tenga un valor.
     if (!this.forbiddenName) {
       return null;
     }
