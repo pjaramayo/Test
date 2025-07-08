@@ -20,7 +20,6 @@ import {
 })
 export class ForbiddenValidatorDirective implements Validator {
   @Input('appForbiddenName') forbiddenName: string = ''; //Recibe el valor.
-  //appForbiddenName es un Alias.
   //appForbiddenName es un alias que enlaza con el alias del html.
   //forbiddenName es una propiedad para trabajar en este fichero.ts, esta contiene Ramón.
   validate(control: AbstractControl): ValidationErrors | null {

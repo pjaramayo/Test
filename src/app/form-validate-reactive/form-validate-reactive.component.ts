@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'; // Necesario para @if
 import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms'; // ¡Importaciones clave para formularios reactivos!
 
 // Importa tu validador personalizado (la función pura)
-import { forbiddenNameValidator } from './forbidden-name.validator'; // Asumiendo que está en el mismo archivo o la ruta es correcta
+import { forbiddenNameValidator } from './forbidden-name.validator'; // Asumiendo que está en el mismo archivo o la ruta es correcta.
 
 interface Actor {
   name: string;

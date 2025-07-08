@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Address, ProfileForm } from './profile-form.model';
+
+import {
+  FormGroup,
+  FormControl,
+  ReactiveFormsModule,
+  AbstractControl,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -20,6 +27,7 @@ export class FormGrpComponent {
       zip: new FormControl(''),
     }),
   });
+
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.formGr.value);
@@ -31,5 +39,14 @@ export class FormGrpComponent {
         street: '123 Drew Street',
       },
     });
+  }
+
+  // Obtener el control 'firstName' de forma segura como AbstractControl
+ firstNameControl: AbstractControl | null = this.formGr.get('firstName');
+
+
+  if(firstNameControl:any) {
+    console.log('Valor:', firstNameControl.value);
+    console.log('Si entro')
   }
 }

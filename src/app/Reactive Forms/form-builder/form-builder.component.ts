@@ -14,7 +14,7 @@ interface AddressFormControls {
   street: FormControl<string>;
   city: FormControl<string>;
   state: FormControl<string>;
-  zip: FormControl<string>;
+  zip?: FormControl<string>;
 }
 interface frm {
   firstName: FormControl<string>;
@@ -29,6 +29,7 @@ interface frm {
 })
 export class FormBuilderComponent {
   private fb = inject(NonNullableFormBuilder);
+  //Enfoque de tipado fuerte que se sugiere en las buenas practicas.
   formulario: FormGroup<frm> = this.fb.group({
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
