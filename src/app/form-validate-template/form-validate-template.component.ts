@@ -7,8 +7,6 @@ import { FormsModule } from '@angular/forms'; // ¡FUNDAMENTAL para [(ngModel)] 
 import { ForbiddenValidatorDirective } from './forbidden-name.directive';
 // Si está en una carpeta diferente, por ejemplo, 'src/app/shared/directives':
 
-
-
 interface Actor {
   name: string;
 }
@@ -19,22 +17,33 @@ interface Actor {
   imports: [
     CommonModule,
     FormsModule,
-    ForbiddenValidatorDirective // Aquí es donde lo importamos directamente
+    ForbiddenValidatorDirective, // Aquí es donde lo importamos directamente
   ],
   templateUrl: './form-validate-template.component.html',
-  styleUrl: './form-validate-template.component.css'
+  styleUrl: './form-validate-template.component.css',
 })
+
 export class FormValidateTemplateComponent implements OnInit {
+  model:string='';
+  donBool:boolean = false;
 
   actor: Actor = {
-    name: 'Superman'
+    name: 'Superman',
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.actor.name)
+  }
 
   onSubmit(): void {
     console.log('Formulario enviado!', this.actor);
   }
+
+  cambiarValor(valorDelInput:string){
+  // console.log('actor.name:', valorDelInput);
+  this.donBool = !!valorDelInput && valorDelInput.length > 4;
+
+}
 }

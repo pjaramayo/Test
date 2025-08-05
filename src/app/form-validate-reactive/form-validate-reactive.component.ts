@@ -5,9 +5,11 @@ import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } 
 // Importa tu validador personalizado (la función pura)
 import { forbiddenNameValidator } from './forbidden-name.validator'; // Asumiendo que está en el mismo archivo o la ruta es correcta.
 
-interface Actor {
-  name: string;
-}
+// Al dope pq solo estás probando un solo campo.
+// interface Actor {
+//   name: string;
+// }
+
 
 @Component({
   selector: 'app-form-validate-template',
@@ -22,21 +24,20 @@ interface Actor {
 })
 export class FormValidateReactiveComponent implements OnInit {
 
-  // Definimos el FormGroup que representará nuestro formulario
+  // Definimos el FormGroup que representará nuestro formulario.
   actorForm!: FormGroup;
-
+  // Al dope pq solo estás probando un solo campo.
   // El modelo de datos (puede ser inicializado con valores o vacío)
-  actor: Actor = {
-    name: 'Superman' // Valor inicial para el campo 'name'
-  };
-
-  constructor(private fb: FormBuilder) { } // Inyectamos FormBuilder para crear el FormGroup
+  // actor: Actor = {
+  //   name: 'Superman' // Valor inicial para el campo 'name'.
+  // };
+  constructor(private fb: FormBuilder) { } // Inyectamos el servicio FormBuilder para crear el FormGroup.
 
   ngOnInit(): void {
     // Inicializamos el FormGroup con sus FormControls y validadores
     this.actorForm = this.fb.group({
       // Definimos el FormControl 'name'
-      name: new FormControl(this.actor.name, [ // Primer argumento: valor inicial
+      nombre: this.fb.control('Superman', [ // Primer argumento: valor inicial
         Validators.required,                 // Validador: campo requerido
         Validators.minLength(4),             // Validador: longitud mínima de 4
         forbiddenNameValidator(/ramon/i)     // ¡Tu validador personalizado, pasado directamente!
@@ -64,6 +65,7 @@ export class FormValidateReactiveComponent implements OnInit {
   // Getter para acceder fácilmente al FormControl 'name' en la plantilla
   // Esto es para que en el HTML puedas usar 'nameControl.invalid' en lugar de 'actorForm.get('name')?.invalid'
   get nameControl(): FormControl {
-    return this.actorForm.get('name') as FormControl;
+    return this.actorForm.get('nombre') as FormControl;
+
   }
 }

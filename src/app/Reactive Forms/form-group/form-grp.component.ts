@@ -42,11 +42,10 @@ export class FormGrpComponent {
   }
 
   // Obtener el control 'firstName' de forma segura como AbstractControl
- firstNameControl: AbstractControl | null = this.formGr.get('firstName');
+  firstNameControl: AbstractControl | null = this.formGr.get('firstName');
 
-
-  if(firstNameControl:any) {
+  if(firstNameControl: any) {
     console.log('Valor:', firstNameControl.value);
-    console.log('Si entro')
+    console.log('Si entro');
   }
 }

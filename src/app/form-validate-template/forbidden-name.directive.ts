@@ -1,7 +1,7 @@
 import { Directive, Input } from '@angular/core';
 import {
-  AbstractControl,
   NG_VALIDATORS,
+  AbstractControl,
   Validator,
   ValidatorFn,
   ValidationErrors,
@@ -23,7 +23,7 @@ export class ForbiddenValidatorDirective implements Validator {
   //appForbiddenName es un alias que enlaza con el alias del html.
   //forbiddenName es una propiedad para trabajar en este fichero.ts, esta contiene Ramón.
   validate(control: AbstractControl): ValidationErrors | null {
-    //Aqui se chequea que el input tenga un valor.
+    //Aqui se chequea que el input tenga valor a través del @Input(), no tiene sentido ejecutar la validación, ya que no hay nada contra qué comparar.
     if (!this.forbiddenName) {
       return null;
     }

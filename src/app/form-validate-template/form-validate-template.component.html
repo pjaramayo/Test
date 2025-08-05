@@ -1,14 +1,21 @@
 <form>
+<label for="modelIput">Test de Ng Model</label>
+  <input #modelInput [ngModel]="model" (ngModelChange)="onNameChange($event)">
+  <p>Valor del model-> : </p>
+  <p>{{model}}</p>
+  <p>{{donBool}}</p>
+
   <label class="col-form-label" for="name">Name: </label>
   <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="Ramon"
-    [(ngModel)]="actor.name" #ame="ngModel"/>
+  [(ngModel)]="actor.name"  #ame="ngModel"/>
+  <p>{{actor.name}}</p>
 
 
   @if (ame.invalid && (ame.dirty || ame.touched)) {
      touched {{ame.touched}}
   <div class="alert">
     @if (ame.hasError('required')) {
-    <div>
+    <div>adfa
       Campo name requerido.
     </div>
     }
@@ -36,7 +43,8 @@
 
 <div class="container">
   <ul>
-    <h1>Conceptos Fundamentales de Validación en Angular</h1>
+    <h1>Conceptos Fundamentales de Validación en Angular.</h1>
+    <h6>Nivel 2(comprender)</h6>
 
 
     <h2>1. ¿Qué es <code>NG_VALIDATORS</code>?</h2>

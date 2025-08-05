@@ -1,3 +1,4 @@
+###### Nivel 2 (Comprender)
 ## 1. ¿Qué es el NG_VALIDATORS?
  * Es un **token de inyección de dependencias de Angular** (🆔 una identificación).
 
