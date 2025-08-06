@@ -1,6 +1,6 @@
 <form>
 <label for="modelIput">Test de Ng Model</label>
-  <input #modelInput [ngModel]="model" (ngModelChange)="onNameChange($event)">
+  <input #modelInput [ngModel]="model" (ngModelChange)="cambiarValor($event)">
   <p>Valor del model-> : </p>
   <p>{{model}}</p>
   <p>{{donBool}}</p>
