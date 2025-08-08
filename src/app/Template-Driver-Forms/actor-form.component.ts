@@ -13,7 +13,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class ActorFormComponent {
   skills = ['Method Acting', 'Singing', 'Dancing', 'Swordfighting'];
-  model = new Actor(18, 'Tom Cruise', this.skills[3], 'CW Productions');
+  model = new Actor(18, 'Tom Cruise', this.skills[3], 'CW ing');
   submitted = false;
 
   onSubmit() {
